@@ -2,19 +2,18 @@
 import { useUserContext } from "@/context/userContext";
 import React from "react";
 
+// ✅ KEEP the interface name as Props — this is fine
 interface Props {
   params: {
     verificationToken: string;
   };
 }
 
-function VerifyEmailPage({ params }: Props) {
-  const { verificationToken } = params;
-
+function VerifyEmailPage({ params: { verificationToken } }: Props) {
   const { verifyUser } = useUserContext();
 
   return (
-    <div className="auth-page  flex flex-col justify-center items-center">
+    <div className="auth-page flex flex-col justify-center items-center">
       <div className="bg-white flex flex-col justify-center gap-[1rem] px-[4rem] py-[2rem] rounded-md">
         <h1 className="text-[#999] text-[2rem]">Verify Your Account</h1>
         <button
