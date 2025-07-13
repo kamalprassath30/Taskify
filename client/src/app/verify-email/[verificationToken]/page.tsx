@@ -2,13 +2,13 @@
 import { useUserContext } from "@/context/userContext";
 import React from "react";
 
-interface PageProps {
+interface Props {
   params: {
     verificationToken: string;
   };
 }
 
-function VerifyEmailPage({ params }: PageProps) {
+function VerifyEmailPage({ params }: Props) {
   const { verificationToken } = params;
 
   const { verifyUser } = useUserContext();
