@@ -1,4 +1,5 @@
 "use client";
+import { useTasks } from "@/context/taskContext";
 import { useUserContext } from "@/context/userContext";
 import { github, moon, profile } from "@/utils/Icons";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import React from "react";
 
 function Header() {
   const { user } = useUserContext();
+  const { activeTasks, openModalForAdd } = useTasks();
   const { name } = user;
   const userId = user._id;
   console.log("user: ", user);
@@ -21,7 +23,10 @@ function Header() {
         <p>
           {userId ? (
             <>
-              You have <span className="font-bold text-[#3aafae]">5</span>{" "}
+              You have{" "}
+              <span className="font-bold text-[#3aafae]">
+                {activeTasks.length}
+              </span>{" "}
               active tasks
             </>
           ) : (
@@ -30,7 +35,10 @@ function Header() {
         </p>
       </div>
       <div className="h-[50px] flex items-center gap-[10.4rem]">
-        <button className="px-8 py-3 bg-[#3aafae] text-white rounded-[50px] hover:bg-[#00A1F1] hover:text-white tranition-all duration-200 ease-in-out">
+        <button
+          className="px-8 py-3 bg-[#3aafae] text-white rounded-[50px] hover:bg-[#00A1F1] hover:text-white tranition-all duration-200 ease-in-out"
+          onClick={openModalForAdd}
+        >
           Create a new task
         </button>
       </div>
