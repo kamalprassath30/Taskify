@@ -3,13 +3,13 @@ import { useUserContext } from "@/context/userContext";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-interface Props {
+interface PageProps {
   params: {
     resetToken: string;
   };
 }
 
-const ResetPasswordPage: React.FC<Props> = ({ params: { resetToken } }) => {
+const ResetPasswordPage: React.FC<PageProps> = ({ params: { resetToken } }) => {
   const { resetPassword } = useUserContext();
 
   const [showPassword, setShowPassword] = useState(false);

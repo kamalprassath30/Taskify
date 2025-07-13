@@ -2,14 +2,13 @@
 import { useUserContext } from "@/context/userContext";
 import React from "react";
 
-// ✅ KEEP the interface name as Props — this is fine
-interface Props {
+interface PageProps {
   params: {
     verificationToken: string;
   };
 }
 
-function VerifyEmailPage({ params: { verificationToken } }: Props) {
+function VerifyEmailPage({ params: { verificationToken } }: PageProps) {
   const { verifyUser } = useUserContext();
 
   return (
