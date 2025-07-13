@@ -2,13 +2,12 @@
 import { useUserContext } from "@/context/userContext";
 import React from "react";
 
-interface PageProps {
-  params: {
-    verificationToken: string;
-  };
-}
-
-function VerifyEmailPage({ params: { verificationToken } }: PageProps) {
+function VerifyEmailPage({
+  params,
+}: {
+  params: { verificationToken: string };
+}) {
+  const { verificationToken } = params;
   const { verifyUser } = useUserContext();
 
   return (
@@ -17,9 +16,7 @@ function VerifyEmailPage({ params: { verificationToken } }: PageProps) {
         <h1 className="text-[#999] text-[2rem]">Verify Your Account</h1>
         <button
           className="px-4 py-2 self-center bg-blue-500 text-white rounded-md"
-          onClick={() => {
-            verifyUser(verificationToken);
-          }}
+          onClick={() => verifyUser(verificationToken)}
         >
           Verify
         </button>
