@@ -9,7 +9,7 @@ interface PageProps {
   };
 }
 
-function Page({ params: { resetToken } }: PageProps) {
+function ResetPasswordPage({ params: { resetToken } }: PageProps) {
   const { resetPassword } = useUserContext();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -113,4 +113,4 @@ function Page({ params: { resetToken } }: PageProps) {
   );
 }
 
-export default page;
+export default ResetPasswordPage;
