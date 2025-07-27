@@ -12,7 +12,7 @@ function page() {
       router.push("/");
     }
   }, [user, router]);
-  if (user && user) {
+  if (user && user._id) {
     return null;
   }
   return (

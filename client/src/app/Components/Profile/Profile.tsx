@@ -6,10 +6,13 @@ import { useTasks } from "@/context/taskContext";
 
 function Profile() {
   const { user } = useUserContext();
-  const { tasks, completedTasks, activeTasks } = useTasks();
+  const { tasks, completedTasks, activeTasks, openProfileModal } = useTasks();
   return (
     <div className="m-6">
-      <div className="px-2 py-4 flex items-center gap-3 bg-[#E6E6E6]/20 rounded-[0.8rem]">
+      <div
+        className="px-2 py-4 flex items-center gap-3 bg-[#E6E6E6]/20 rounded-[0.8rem]"
+        onClick={openProfileModal}
+      >
         <div>
           <Image
             src={user?.photo}

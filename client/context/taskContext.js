@@ -4,7 +4,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const TasksContext = createContext();
-const serverUrl = "http://localhost:8000/api/v1";
+// const serverUrl = "http://localhost:8000/api/v1";
+const serverUrl = "https://taskify-jiuu.onrender.com/api/v1";
 
 export const TasksProvider = ({ children }) => {
   const userId = useUserContext().user._id;
@@ -145,6 +146,8 @@ export const TasksProvider = ({ children }) => {
         modalMode,
         completedTasks,
         activeTasks,
+        profileModal,
+        openProfileModal,
       }}
     >
       {children}

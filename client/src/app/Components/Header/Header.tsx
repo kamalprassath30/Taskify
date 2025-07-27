@@ -3,11 +3,13 @@ import { useTasks } from "@/context/taskContext";
 import { useUserContext } from "@/context/userContext";
 import { github, moon, profile } from "@/utils/Icons";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function Header() {
   const { user } = useUserContext();
   const { activeTasks, openModalForAdd } = useTasks();
+  const router = useRouter();
   const { name } = user;
   const userId = user._id;
   console.log("user: ", user);
@@ -37,9 +39,15 @@ function Header() {
       <div className="h-[50px] flex items-center gap-[10.4rem]">
         <button
           className="px-8 py-3 bg-[#3aafae] text-white rounded-[50px] hover:bg-[#00A1F1] hover:text-white tranition-all duration-200 ease-in-out"
-          onClick={openModalForAdd}
+          onClick={() => {
+            if (userId) {
+              openModalForAdd();
+            } else {
+              router.push("/login");
+            }
+          }}
         >
-          Create a new task
+          {userId ? "Add Task" : "Login/Register"}
         </button>
       </div>
       <div className="flex gap-4 items-center">
