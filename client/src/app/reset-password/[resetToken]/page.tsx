@@ -1,26 +1,31 @@
 "use client";
+
 import { useUserContext } from "@/context/userContext";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-interface Props {
+interface PageProps {
   params: {
     resetToken: string;
   };
 }
 
-function page({ params: { resetToken } }: Props) {
+export default function ResetPasswordPage({
+  params: { resetToken },
+}: PageProps) {
   const { resetPassword } = useUserContext();
 
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handlePasswordChange = (e: any) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
-  const handleConfirmPasswordChange = (e: any) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setConfirmPassword(e.target.value);
   };
 
@@ -28,8 +33,7 @@ function page({ params: { resetToken } }: Props) {
     setShowPassword(!showPassword);
   };
 
-  // handle submit
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -47,8 +51,9 @@ function page({ params: { resetToken } }: Props) {
           <h1 className="mb-2 text-center text-[1.35rem] font-medium">
             Reset Your Password!
           </h1>
+
           <div className="relative mt-[1rem] flex flex-col">
-            <label htmlFor="email" className="mb-1 text-[#999]">
+            <label htmlFor="password" className="mb-1 text-[#999]">
               New Password
             </label>
             <input
@@ -72,16 +77,17 @@ function page({ params: { resetToken } }: Props) {
               )}
             </button>
           </div>
+
           <div className="relative mt-[1rem] flex flex-col">
-            <label htmlFor="email" className="mb-1 text-[#999]">
+            <label htmlFor="confirm-password" className="mb-1 text-[#999]">
               Confirm Password
             </label>
             <input
               type={showPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              id="password"
-              name="password"
+              id="confirm-password"
+              name="confirmPassword"
               placeholder="*********"
               className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
             />
@@ -97,6 +103,7 @@ function page({ params: { resetToken } }: Props) {
               )}
             </button>
           </div>
+
           <div className="flex">
             <button
               type="submit"
@@ -112,5 +119,3 @@ function page({ params: { resetToken } }: Props) {
     </main>
   );
 }
-
-export default page;
