@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserContext } from "@/context/userContext";
-import React from "react";
+import React, { use } from "react";
 
 interface PageProps {
   params: {
@@ -9,8 +9,8 @@ interface PageProps {
   };
 }
 
-export default function VerifyAccountPage({ params }: PageProps) {
-  const { verificationToken } = params;
+export default function VerifyAccountPage({ params }: { params: Promise<{ verificationToken: string }> }) {
+  const { verificationToken } = use(params);
   const { verifyUser } = useUserContext();
 
   return (
