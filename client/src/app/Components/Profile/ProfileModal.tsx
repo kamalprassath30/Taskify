@@ -101,7 +101,7 @@ function ProfileModal() {
                 id="email"
                 name="email"
                 value={email}
-                onChange={(e) => handlerUserInput("email")(e)}
+                onChange={(e) => handleUserInput("email")(e)}
                 className="w-full py-[0.4rem] pl-9 pr-2 font-medium rounded-lg border-2 border-[#323232]/10"
               />
               <span className="absolute left-0 top-0 bottom-0 flex items-center px-3 text-[#323232]/50">
