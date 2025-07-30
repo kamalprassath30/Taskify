@@ -10,8 +10,8 @@ axios.defaults.withCredentials = true;
 
 export const UserContextProvider = ({ children }) => {
   // const serverUrl = "http://localhost:8000";
-  // const serverUrl = "https://taskify-jiuu.onrender.com";
-  const serverUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/v1`;
+  const serverUrl = "https://taskify-jiuu.onrender.com/api/v1";
+  // const serverUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/v1`;
 
   const router = useRouter();
 
