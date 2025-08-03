@@ -52,7 +52,13 @@ export const UserContextProvider = ({ children }) => {
       router.push("/login");
     } catch (error) {
       console.log("Error registering user", error);
-      toast.error(error.response.data.message);
+      if (error.response) {
+        toast.error(error.response.data.message || "Registration failed");
+      } else if (error.request) {
+        toast.error("Cannot connect to server. Please check your internet connection.");
+      } else {
+        toast.error("An error occurred during registration.");
+      }
     }
   };
 
@@ -86,7 +92,13 @@ export const UserContextProvider = ({ children }) => {
       router.push("/");
     } catch (error) {
       console.log("Error logging in user", error);
-      toast.error(error.response.data.message);
+      if (error.response) {
+        toast.error(error.response.data.message || "Login failed");
+      } else if (error.request) {
+        toast.error("Cannot connect to server. Please check your internet connection.");
+      } else {
+        toast.error("An error occurred during login.");
+      }
     }
   };
 
