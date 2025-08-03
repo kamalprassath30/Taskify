@@ -131,7 +131,7 @@ export const TasksProvider = ({ children }) => {
 
   useEffect(() => {
     getTasks();
-    getTask();
+    // getTask();
   }, [userId]);
   return (
     <TasksContext.Provider
